@@ -4,8 +4,7 @@ package restaurant;
  * Outcome of a staff action. A failed result carries the reason shown to the manager
  * and does NOT use up the staff member's task for the turn.
  */
-
-public final class ActionResult {
+public class ActionResult {
     private final boolean success;
     private final String message;
 
@@ -14,17 +13,19 @@ public final class ActionResult {
         this.message = message;
     }
 
-    public static ActionResult ok(String message)  { 
-        return new ActionResult(true, message); 
-    }
-    public static ActionResult fail(String reason) { 
-        return new ActionResult(false, reason); 
+    public static ActionResult ok(String msg) {
+        return new ActionResult(true, msg);
     }
 
-    public boolean isSuccess() { 
-        return success; 
+    public static ActionResult fail(String reason) {
+        return new ActionResult(false, reason);
     }
-    public String getMessage() { 
-        return message; 
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

@@ -1,53 +1,79 @@
 package restaurant;
 
+/** One customer's order. It owns its own preparation progress and refuses illegal status changes. */
 public class Order {
+
+    public enum Status { PREPARING, READY, SERVED, PAID, CANCELLED }
+
     private final Customer customer;
-    private final Dish dish;
+    private final MenuItem item;
     private final int billCents;      // locked when the order is taken
-    private int remainingUnits;
-    private OrderStatus status = OrderStatus.TAKEN;
+    private int unitsDone;
+    private Status status = Status.PREPARING;
 
-    public Order(Customer customer, Dish dish, int billCents) {
+    public Order(Customer customer, MenuItem item, int billCents) {
         this.customer = customer;
-        this.dish = dish;
+        this.item = item;
         this.billCents = billCents;
-        this.remainingUnits = dish.getUnits();
     }
 
-    public Customer getCustomer()   { return customer; }
-    public Dish getDish()           { return dish; }
-    public int getBillCents()       { return billCents; }
-    public int getRemainingUnits()  { return remainingUnits; }
-    public OrderStatus getStatus()  { return status; }
-
-    public boolean canAdvance() {
-        return status == OrderStatus.TAKEN || status == OrderStatus.IN_PREPARATION;
+    /** True while the Chef can still work on this order. */
+    public boolean canPrepare() {
+        return status == Status.PREPARING;
     }
 
-    /** Chef does one preparation unit; the order becomes READY after the last one. */
-    public void advancePrep() {
-        if (!canAdvance()) {
-            throw new IllegalStateException("Order cannot be advanced from " + status);
+    /** Does one preparation unit. Returns true if that was the last unit (the order is now READY). */
+    public boolean advancePrep() {
+        if (!canPrepare()) {
+            throw new IllegalStateException("Order cannot be prepared in status " + status);
         }
-        remainingUnits--;
-        status = (remainingUnits == 0) ? OrderStatus.READY : OrderStatus.IN_PREPARATION;
+        unitsDone++;
+        if (unitsDone >= item.getPrepUnits()) {
+            status = Status.READY;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isReady() {
+        return status == Status.READY;
     }
 
     public void markServed() {
-        if (status != OrderStatus.READY) {
+        if (status != Status.READY) {
             throw new IllegalStateException("Only a READY order can be served.");
         }
-        status = OrderStatus.SERVED;
+        status = Status.SERVED;
     }
 
     public void markPaid() {
-        if (status != OrderStatus.SERVED) {
+        if (status != Status.SERVED) {
             throw new IllegalStateException("Only a SERVED order can be paid.");
         }
-        status = OrderStatus.PAID;
+        status = Status.PAID;
     }
 
     public void cancel() {
-        status = OrderStatus.CANCELLED;
+        status = Status.CANCELLED;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public MenuItem getItem() {
+        return item;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public int getBillCents() {
+        return billCents;
+    }
+
+    public int getRemainingUnits() {
+        return item.getPrepUnits() - unitsDone;
     }
 }

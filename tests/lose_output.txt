@@ -3,78 +3,81 @@
 ==================== TURN 1 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 100 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 100 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [1 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Take an order [not possible: nobody is seated and waiting to order]
+  4) Serve a dish [not possible: no dish is READY]
+  5) Wait (the Waiter does nothing this turn)
+Choose 1-5:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 1 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 1/18
 
 ==================== TURN 2 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 92 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 92 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [1 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Take an order [not possible: nobody is seated and waiting to order]
+  4) Serve a dish [not possible: no dish is READY]
+  5) Wait (the Waiter does nothing this turn)
+Choose 1-5:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 2 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 2/18
 
 ==================== TURN 3 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 84 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 84 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [1 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Take an order [not possible: nobody is seated and waiting to order]
+  4) Serve a dish [not possible: no dish is READY]
+  5) Wait (the Waiter does nothing this turn)
+Choose 1-5:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 3 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 3/18
   >> Customer #2 (Regular) arrives and joins the queue with satisfaction 100.
@@ -82,81 +85,90 @@ Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/
 ==================== TURN 4 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 76 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 100 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 76 | WAITING
+   #2 Regular | satisfaction 100 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [2 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Take an order [not possible: nobody is seated and waiting to order]
+  6) Serve a dish [not possible: no dish is READY]
+  7) Wait (the Waiter does nothing this turn)
+Choose 1-7:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 4 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 4/18
 
 ==================== TURN 5 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 68 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 92 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 68 | WAITING
+   #2 Regular | satisfaction 92 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [2 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Take an order [not possible: nobody is seated and waiting to order]
+  6) Serve a dish [not possible: no dish is READY]
+  7) Wait (the Waiter does nothing this turn)
+Choose 1-7:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 5 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 5/18
 
 ==================== TURN 6 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 60 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 84 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 60 | WAITING
+   #2 Regular | satisfaction 84 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [2 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Take an order [not possible: nobody is seated and waiting to order]
+  6) Serve a dish [not possible: no dish is READY]
+  7) Wait (the Waiter does nothing this turn)
+Choose 1-7:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 6 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 6/18
   >> Customer #3 (Regular) arrives and joins the queue with satisfaction 100.
@@ -164,84 +176,99 @@ Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/
 ==================== TURN 7 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 52 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 76 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 100 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 52 | WAITING
+   #2 Regular | satisfaction 76 | WAITING
+   #3 Regular | satisfaction 100 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [3 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Seat Customer #3 at Table 1
+  6) Seat Customer #3 at Table 2
+  7) Take an order [not possible: nobody is seated and waiting to order]
+  8) Serve a dish [not possible: no dish is READY]
+  9) Wait (the Waiter does nothing this turn)
+Choose 1-9:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 7 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 7/18
 
 ==================== TURN 8 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 44 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 68 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 92 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 44 | WAITING
+   #2 Regular | satisfaction 68 | WAITING
+   #3 Regular | satisfaction 92 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [3 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Seat Customer #3 at Table 1
+  6) Seat Customer #3 at Table 2
+  7) Take an order [not possible: nobody is seated and waiting to order]
+  8) Serve a dish [not possible: no dish is READY]
+  9) Wait (the Waiter does nothing this turn)
+Choose 1-9:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 8 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 8/18
 
 ==================== TURN 9 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 36 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 60 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 84 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 36 | WAITING
+   #2 Regular | satisfaction 60 | WAITING
+   #3 Regular | satisfaction 84 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [3 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Seat Customer #3 at Table 1
+  6) Seat Customer #3 at Table 2
+  7) Take an order [not possible: nobody is seated and waiting to order]
+  8) Serve a dish [not possible: no dish is READY]
+  9) Wait (the Waiter does nothing this turn)
+Choose 1-9:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 9 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 9/18
   >> Customer #4 (Regular) arrives and joins the queue with satisfaction 100.
@@ -249,87 +276,108 @@ Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/
 ==================== TURN 10 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 28 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 52 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 76 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 100 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 28 | WAITING
+   #2 Regular | satisfaction 52 | WAITING
+   #3 Regular | satisfaction 76 | WAITING
+   #4 Regular | satisfaction 100 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [4 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Seat Customer #3 at Table 1
+  6) Seat Customer #3 at Table 2
+  7) Seat Customer #4 at Table 1
+  8) Seat Customer #4 at Table 2
+  9) Take an order [not possible: nobody is seated and waiting to order]
+  10) Serve a dish [not possible: no dish is READY]
+  11) Wait (the Waiter does nothing this turn)
+Choose 1-11:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 10 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 10/18
 
 ==================== TURN 11 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 20 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 44 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 68 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 92 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 20 | WAITING
+   #2 Regular | satisfaction 44 | WAITING
+   #3 Regular | satisfaction 68 | WAITING
+   #4 Regular | satisfaction 92 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [4 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Seat Customer #3 at Table 1
+  6) Seat Customer #3 at Table 2
+  7) Seat Customer #4 at Table 1
+  8) Seat Customer #4 at Table 2
+  9) Take an order [not possible: nobody is seated and waiting to order]
+  10) Serve a dish [not possible: no dish is READY]
+  11) Wait (the Waiter does nothing this turn)
+Choose 1-11:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 11 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 11/18
 
 ==================== TURN 12 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 12 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 36 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 60 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 84 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 12 | WAITING
+   #2 Regular | satisfaction 36 | WAITING
+   #3 Regular | satisfaction 60 | WAITING
+   #4 Regular | satisfaction 84 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [4 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Seat Customer #3 at Table 1
+  6) Seat Customer #3 at Table 2
+  7) Seat Customer #4 at Table 1
+  8) Seat Customer #4 at Table 2
+  9) Take an order [not possible: nobody is seated and waiting to order]
+  10) Serve a dish [not possible: no dish is READY]
+  11) Wait (the Waiter does nothing this turn)
+Choose 1-11:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 12 ---
 Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 12/18
   >> Customer #5 (Regular) arrives and joins the queue with satisfaction 100.
@@ -337,30 +385,39 @@ Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/
 ==================== TURN 13 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #1 Regular | satisfaction 4 | WAITING_FOR_TABLE
-   #2 Regular | satisfaction 28 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 52 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 76 | WAITING_FOR_TABLE
-   #5 Regular | satisfaction 100 | WAITING_FOR_TABLE
+   #1 Regular | satisfaction 4 | WAITING
+   #2 Regular | satisfaction 28 | WAITING
+   #3 Regular | satisfaction 52 | WAITING
+   #4 Regular | satisfaction 76 | WAITING
+   #5 Regular | satisfaction 100 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [5 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #1 at Table 1
+  2) Seat Customer #1 at Table 2
+  3) Seat Customer #2 at Table 1
+  4) Seat Customer #2 at Table 2
+  5) Seat Customer #3 at Table 1
+  6) Seat Customer #3 at Table 2
+  7) Seat Customer #4 at Table 1
+  8) Seat Customer #4 at Table 2
+  9) Seat Customer #5 at Table 1
+  10) Seat Customer #5 at Table 2
+  11) Take an order [not possible: nobody is seated and waiting to order]
+  12) Serve a dish [not possible: no dish is READY]
+  13) Wait (the Waiter does nothing this turn)
+Choose 1-13:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
   >> Customer #1 ran out of patience and LEFT without paying.
 --- End of turn 13 ---
 Served: 0 | Unhappy departures: 1 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 13/18
@@ -368,58 +425,72 @@ Served: 0 | Unhappy departures: 1 | Revenue: $0.00 | Avg satisfaction (paid): N/
 ==================== TURN 14 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #2 Regular | satisfaction 20 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 44 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 68 | WAITING_FOR_TABLE
-   #5 Regular | satisfaction 92 | WAITING_FOR_TABLE
+   #2 Regular | satisfaction 20 | WAITING
+   #3 Regular | satisfaction 44 | WAITING
+   #4 Regular | satisfaction 68 | WAITING
+   #5 Regular | satisfaction 92 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [4 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #2 at Table 1
+  2) Seat Customer #2 at Table 2
+  3) Seat Customer #3 at Table 1
+  4) Seat Customer #3 at Table 2
+  5) Seat Customer #4 at Table 1
+  6) Seat Customer #4 at Table 2
+  7) Seat Customer #5 at Table 1
+  8) Seat Customer #5 at Table 2
+  9) Take an order [not possible: nobody is seated and waiting to order]
+  10) Serve a dish [not possible: no dish is READY]
+  11) Wait (the Waiter does nothing this turn)
+Choose 1-11:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 14 ---
 Served: 0 | Unhappy departures: 1 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 14/18
 
 ==================== TURN 15 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #2 Regular | satisfaction 12 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 36 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 60 | WAITING_FOR_TABLE
-   #5 Regular | satisfaction 84 | WAITING_FOR_TABLE
+   #2 Regular | satisfaction 12 | WAITING
+   #3 Regular | satisfaction 36 | WAITING
+   #4 Regular | satisfaction 60 | WAITING
+   #5 Regular | satisfaction 84 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [4 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #2 at Table 1
+  2) Seat Customer #2 at Table 2
+  3) Seat Customer #3 at Table 1
+  4) Seat Customer #3 at Table 2
+  5) Seat Customer #4 at Table 1
+  6) Seat Customer #4 at Table 2
+  7) Seat Customer #5 at Table 1
+  8) Seat Customer #5 at Table 2
+  9) Take an order [not possible: nobody is seated and waiting to order]
+  10) Serve a dish [not possible: no dish is READY]
+  11) Wait (the Waiter does nothing this turn)
+Choose 1-11:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 15 ---
 Served: 0 | Unhappy departures: 1 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 15/18
   >> Customer #6 (Regular) arrives and joins the queue with satisfaction 100.
@@ -427,30 +498,39 @@ Served: 0 | Unhappy departures: 1 | Revenue: $0.00 | Avg satisfaction (paid): N/
 ==================== TURN 16 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #2 Regular | satisfaction 4 | WAITING_FOR_TABLE
-   #3 Regular | satisfaction 28 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 52 | WAITING_FOR_TABLE
-   #5 Regular | satisfaction 76 | WAITING_FOR_TABLE
-   #6 Regular | satisfaction 100 | WAITING_FOR_TABLE
+   #2 Regular | satisfaction 4 | WAITING
+   #3 Regular | satisfaction 28 | WAITING
+   #4 Regular | satisfaction 52 | WAITING
+   #5 Regular | satisfaction 76 | WAITING
+   #6 Regular | satisfaction 100 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [5 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #2 at Table 1
+  2) Seat Customer #2 at Table 2
+  3) Seat Customer #3 at Table 1
+  4) Seat Customer #3 at Table 2
+  5) Seat Customer #4 at Table 1
+  6) Seat Customer #4 at Table 2
+  7) Seat Customer #5 at Table 1
+  8) Seat Customer #5 at Table 2
+  9) Seat Customer #6 at Table 1
+  10) Seat Customer #6 at Table 2
+  11) Take an order [not possible: nobody is seated and waiting to order]
+  12) Serve a dish [not possible: no dish is READY]
+  13) Wait (the Waiter does nothing this turn)
+Choose 1-13:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
   >> Customer #2 ran out of patience and LEFT without paying.
 --- End of turn 16 ---
 Served: 0 | Unhappy departures: 2 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 16/18
@@ -458,63 +538,77 @@ Served: 0 | Unhappy departures: 2 | Revenue: $0.00 | Avg satisfaction (paid): N/
 ==================== TURN 17 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #3 Regular | satisfaction 20 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 44 | WAITING_FOR_TABLE
-   #5 Regular | satisfaction 68 | WAITING_FOR_TABLE
-   #6 Regular | satisfaction 92 | WAITING_FOR_TABLE
+   #3 Regular | satisfaction 20 | WAITING
+   #4 Regular | satisfaction 44 | WAITING
+   #5 Regular | satisfaction 68 | WAITING
+   #6 Regular | satisfaction 92 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [4 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #3 at Table 1
+  2) Seat Customer #3 at Table 2
+  3) Seat Customer #4 at Table 1
+  4) Seat Customer #4 at Table 2
+  5) Seat Customer #5 at Table 1
+  6) Seat Customer #5 at Table 2
+  7) Seat Customer #6 at Table 1
+  8) Seat Customer #6 at Table 2
+  9) Take an order [not possible: nobody is seated and waiting to order]
+  10) Serve a dish [not possible: no dish is READY]
+  11) Wait (the Waiter does nothing this turn)
+Choose 1-11:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 17 ---
 Served: 0 | Unhappy departures: 2 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 17/18
 
 ==================== TURN 18 of 18 ====================
 Revenue: $0.00    Avg satisfaction (paid customers): N/A
 Waiting queue:
-   #3 Regular | satisfaction 12 | WAITING_FOR_TABLE
-   #4 Regular | satisfaction 36 | WAITING_FOR_TABLE
-   #5 Regular | satisfaction 60 | WAITING_FOR_TABLE
-   #6 Regular | satisfaction 84 | WAITING_FOR_TABLE
+   #3 Regular | satisfaction 12 | WAITING
+   #4 Regular | satisfaction 36 | WAITING
+   #5 Regular | satisfaction 60 | WAITING
+   #6 Regular | satisfaction 84 | WAITING
 Tables:
    Table 1: free
    Table 2: free
 Staff tasks available:
    Waiter (1 task): seat a customer [4 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
-   Chef (1 unit):   advance an order [0 in the kitchen]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
    Cashier:         automatic, one payment per turn
 
 WAITER - choose ONE task:
-  1) Seat a queued customer
-  2) Take an order
-  3) Serve a READY order
-  0) Wait (do nothing)
-Choose 0-3:   >> Waiter waits.
+  1) Seat Customer #3 at Table 1
+  2) Seat Customer #3 at Table 2
+  3) Seat Customer #4 at Table 1
+  4) Seat Customer #4 at Table 2
+  5) Seat Customer #5 at Table 1
+  6) Seat Customer #5 at Table 2
+  7) Seat Customer #6 at Table 1
+  8) Seat Customer #6 at Table 2
+  9) Take an order [not possible: nobody is seated and waiting to order]
+  10) Serve a dish [not possible: no dish is READY]
+  11) Wait (the Waiter does nothing this turn)
+Choose 1-11:   >> The Waiter waits.
 
 CHEF - choose ONE task:
-  1) Advance an order by one preparation unit
-  0) Wait (do nothing)
-Choose 0-1:   >> Chef waits.
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
 --- End of turn 18 ---
 Served: 0 | Unhappy departures: 2 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 18/18
 
 ==================== GAME OVER ====================
-Paid customers:  0   (need at least 4)
-Revenue:         $0.00   (need at least $45.00)
+Paid customers:   0   (need at least 4)
+Revenue:          $0.00   (need at least $45.00)
 Avg satisfaction: N/A   (need at least 60)
 RESULT: DEFEAT

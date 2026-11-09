@@ -1,21 +1,21 @@
 package restaurant;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.OptionalDouble;
 
 /**
  * Runs the game: 18 turns, each following the six steps in the brief.
- * It joins the UI, the staff and the restaurant together but keeps the rules in the domain objects.
+ * It joins the screen, the staff and the restaurant together but keeps the rules in the domain classes.
  */
 public class Game {
     private final Restaurant restaurant;
-    private final ArrivalSchedule schedule;
-    private final GameScreen view;
+    private final ConsoleUI ui;
+    private int nextCustomerId = 1;
 
-    public Game(Restaurant restaurant, ArrivalSchedule schedule, GameScreen view) {
-        this.restaurant = restaurant;
-        this.schedule = schedule;
-        this.view = view;
+    public Game(ConsoleUI ui) {
+        this.ui = ui;
+        this.restaurant = new Restaurant();
     }
 
     /** Always plays all 18 turns (no early ending), then returns the result. */
@@ -24,69 +24,52 @@ public class Game {
             runTurn(turn);
         }
         GameResult result = evaluateResult();
-        view.showFinalResult(result, restaurant);
+        ui.showResult(result, restaurant);
         return result;
     }
 
     private void runTurn(int turn) {
         restaurant.startTurn();
 
-        stepArrivals(turn);                       // 1
-        view.showTurnStart(turn, restaurant);
-        stepWaiter(turn);                         // 2 + 3: Waiter acts first...
-        stepChef();                               //        ...then the Chef
-        stepEatingAndPayment(turn);               // 4
-        stepWaitingAndAbandonment();              // 5
-        view.showEndOfTurn(turn, restaurant);
+        stepArrivals(turn);                  // 1
+        ui.showTurnStart(turn, restaurant);
+        stepWaiter(turn);                    // 2 and 3: the Waiter acts first...
+        stepChef(turn);                      //          ...then the Chef (and may cook what the Waiter just took)
+        stepEatingAndPayment(turn);          // 4
+        stepWaitingAndAbandonment();         // 5
+        ui.showEndOfTurn(turn, restaurant);
     }
 
     // Step 1
     private void stepArrivals(int turn) {
-        Optional<Customer> arriving = schedule.arrivingOn(turn);
-        if (arriving.isPresent()) {
-            Customer c = arriving.get();
+        if (GameConfig.ARRIVAL_TURNS.contains(turn)) {
+            Customer c = new RegularCustomer(nextCustomerId++);
             restaurant.addArrival(c);
-            view.showMessage("Customer #" + c.getId() + " (" + c.getTypeName()
+            ui.showMessage("Customer #" + c.getId() + " (" + c.getTypeName()
                     + ") arrives and joins the queue with satisfaction " + c.getSatisfaction() + ".");
         }
     }
 
-    // Steps 2-3 (Waiter). An invalid choice explains why and asks again; the task is not used up.
+    // Steps 2 and 3 (Waiter). A failed choice explains why and asks again; the task is not used up.
     private void stepWaiter(int turn) {
+        List<StaffAction> options = waiterOptions();
         while (true) {
-            WaiterAction action = view.promptWaiterAction(restaurant);
-            if (action.type() == WaiterAction.Type.WAIT) {
-                view.showMessage("Waiter waits.");
-                return;
-            }
-            ActionResult result = executeWaiterAction(action, turn);
-            view.showMessage(result.getMessage());
+            StaffAction chosen = ui.chooseWaiterAction(options);
+            ActionResult result = chosen.execute(restaurant, turn);
+            ui.showMessage(result.getMessage());
             if (result.isSuccess()) {
                 return;
             }
         }
     }
 
-    private ActionResult executeWaiterAction(WaiterAction action, int turn) {
-        Waiter waiter = restaurant.getWaiter();
-        switch (action.type()) {
-            case SEAT:       return waiter.seat(restaurant, action.customer(), action.table());
-            case TAKE_ORDER: return waiter.takeOrder(restaurant, action.customer());
-            case SERVE:      return waiter.serve(restaurant, action.order(), turn);
-            default:         return ActionResult.fail("Unknown Waiter task.");
-        }
-    }
-
-    // Steps 2-3 (Chef)
-    private void stepChef() {
+    // Steps 2 and 3 (Chef). The options are built now, so an order the Waiter just took is included.
+    private void stepChef(int turn) {
+        List<StaffAction> options = chefOptions();
         while (true) {
-            ChefAction action = view.promptChefAction(restaurant);
-            if (action.type() == ChefAction.Type.WAIT) {
-                view.showMessage("Chef waits.");
-                return;
-            }
-            ActionResult result = restaurant.getChef().advance(action.order());
-            view.showMessage(result.getMessage());
+            StaffAction chosen = ui.chooseChefAction(options);
+            ActionResult result = chosen.execute(restaurant, turn);
+            ui.showMessage(result.getMessage());
             if (result.isSuccess()) {
                 return;
             }
@@ -95,30 +78,85 @@ public class Game {
 
     // Step 4
     private void stepEatingAndPayment(int turn) {
-        restaurant.advanceEating(turn);
-        Customer paid = restaurant.getCashier().collectPayment(restaurant, turn);
-        if (paid != null) {
-            view.showMessage("Cashier collects " + Ledger.formatCents(paid.getOrder().getBillCents())
-                    + " from Customer #" + paid.getId() + " (satisfaction recorded: "
-                    + paid.getSatisfaction() + "). Table " + paid.getTable().getNumber() + " is free.");
+        for (Customer c : restaurant.advanceEating(turn)) {
+            ui.showMessage("Customer #" + c.getId() + " has finished eating and is ready to pay.");
+        }
+        ActionResult payment = restaurant.getCashier().collectPayment(restaurant, turn);
+        if (payment.isSuccess()) {
+            ui.showMessage(payment.getMessage());
         }
     }
 
     // Step 5
     private void stepWaitingAndAbandonment() {
-        List<Customer> departed = restaurant.applyEndOfTurnWaiting();
-        for (Customer c : departed) {
-            view.showMessage("Customer #" + c.getId() + " ran out of patience and LEFT without paying.");
+        for (Customer c : restaurant.applyEndOfTurnWaiting()) {
+            ui.showMessage("Customer #" + c.getId() + " ran out of patience and LEFT without paying.");
         }
+    }
+
+    /** Every Waiter task the manager could pick. Tasks that cannot be done are listed with the reason. */
+    private List<StaffAction> waiterOptions() {
+        List<StaffAction> options = new ArrayList<>();
+
+        List<Customer> queue = restaurant.getWaitingQueue();
+        List<Table> freeTables = restaurant.getFreeTables();
+        if (queue.isEmpty() || freeTables.isEmpty()) {
+            options.add(new SeatCustomerAction(null, null));
+        } else {
+            for (Customer c : queue) {
+                for (Table t : freeTables) {
+                    options.add(new SeatCustomerAction(c, t));
+                }
+            }
+        }
+
+        List<Customer> seated = restaurant.getSeatedWithoutOrder();
+        if (seated.isEmpty()) {
+            options.add(new TakeOrderAction(null));
+        } else {
+            for (Customer c : seated) {
+                options.add(new TakeOrderAction(c));
+            }
+        }
+
+        boolean anyReady = false;
+        for (Order o : restaurant.getUnservedOrders()) {
+            if (o.isReady()) {
+                options.add(new ServeOrderAction(o));
+                anyReady = true;
+            }
+        }
+        if (!anyReady) {
+            options.add(new ServeOrderAction(null));
+        }
+
+        options.add(new WaitAction("Waiter"));
+        return options;
+    }
+
+    private List<StaffAction> chefOptions() {
+        List<StaffAction> options = new ArrayList<>();
+        List<Order> inKitchen = restaurant.getOrdersInPreparation();
+        if (inKitchen.isEmpty()) {
+            options.add(new PrepareOrderAction(null));
+        } else {
+            for (Order o : inKitchen) {
+                options.add(new PrepareOrderAction(o));
+            }
+        }
+        options.add(new WaitAction("Chef"));
+        return options;
     }
 
     // Step 6
     private GameResult evaluateResult() {
         Ledger ledger = restaurant.getLedger();
-        boolean enoughPaid = ledger.getPaidCount() >= GameConfig.MIN_PAID_CUSTOMERS;
-        boolean enoughRevenue = ledger.getRevenueCents() >= GameConfig.MIN_REVENUE_CENTS;
-        boolean happyEnough = ledger.hasPaidCustomers()
-                && ledger.getAverageSatisfaction() >= GameConfig.MIN_AVG_SATISFACTION;
+        OptionalDouble average = ledger.getAverageSatisfaction();
+
+        boolean enoughPaid = ledger.getPaidCount() >= GameConfig.TARGET_PAID;
+        boolean enoughRevenue = ledger.getRevenueCents() >= GameConfig.TARGET_REVENUE_CENTS;
+        boolean happyEnough = average.isPresent() && average.getAsDouble() >= GameConfig.TARGET_AVG_SATISFACTION;
+
         return (enoughPaid && enoughRevenue && happyEnough) ? GameResult.VICTORY : GameResult.DEFEAT;
     }
 }
