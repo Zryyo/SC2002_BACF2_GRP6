@@ -68,11 +68,11 @@ Each turn then runs these six steps in order.
 - **Customers choose their own food.** Deterministic rule: customer number *n* orders menu item *(n - 1) mod 3*, so customers 1 to 6 order Salad, Burger, Pasta, Salad, Burger, Pasta. The rule lives in `Customer.chooseDish`, and the choice is shown when the order is placed.
 - **Money is stored as integer cents** and turned into text only in `ConsoleUI`, with two decimals.
 - **Rules stay out of the UI.** `ConsoleUI` only shows the state and collects the manager's choice. Rules live in the domain classes (`Customer`, `Order`, `Waiter`, `Chef`, `Cashier`, `Restaurant`) and in `Game`.
-- **Manager choices are objects.** Each possible task is a `StaffAction` (`SeatCustomerAction`, `TakeOrderAction`, `ServeOrderAction`, `PrepareOrderAction`, `WaitAction`). `Game` builds the list of options, `ConsoleUI` shows their labels, and the chosen action runs itself. A new kind of task is a new class, not a change to `Game`.
+- **Manager choices are objects.** Each possible task is a `StaffAction` (`SeatCustomerAction`, `TakeOrderAction`, `ServeOrderAction`, `PrepareOrderAction`, `WaitAction`). `Game` builds the list of options, `ConsoleUI` shows their labels, and the chosen action runs itself. A new kind of task is a new class implementing `StaffAction`; `Game` only has to add it to its list of options.
 - **Waiter, then Chef.** The Waiter's valid action takes effect immediately, then the Chef's options are built. This lets the Chef work on an order the Waiter took in the same turn.
 - **Impossible tasks stay in the menu with the reason.** Choosing one explains why it failed and asks again, and the staff task is not used up.
 - **Behaviour that differs by customer type sits in overridable methods** (`waitLossPerTurn`, `billFor`, `chooseDish`), so `Game` never checks what type a customer is.
-- **Single `src` folder with git tags.** Each stage is a tagged commit on `main`, not a copy of the code.
+- **Single source folder (`src/restaurant`) with git tags.** Each stage is a tagged commit on `main`, not a copy of the code.
 
 ## Project structure (Stage 1)
 
