@@ -2,12 +2,11 @@ package restaurant;
 
 import java.util.NoSuchElementException;
 
-/** Entry point: builds the game and starts it. */
-public class PlayStage {
+/** Entry point: builds the screen and the game, then starts it. */
+public class RestaurantRushApp {
     public static void main(String[] args) {
-        GameScreen view = new GameScreen(System.in, System.out);
-        Restaurant restaurant = new Restaurant();
-        Game game = new Game(restaurant, ArrivalSchedule.allRegular(), view);
+        ConsoleUI ui = new ConsoleUI();
+        Game game = new Game(ui);
         try {
             game.run();
         } catch (NoSuchElementException e) {

@@ -1,71 +1,119 @@
 package restaurant;
 
+/**
+ * Base class for all customers. Behaviour that differs by customer type (waiting loss, bill,
+ * food choice) sits in methods that subclasses can override, so the game never needs to check
+ * what type a customer is.
+ */
 public abstract class Customer {
+
+    public enum Status { WAITING, SEATED, ORDERED, SERVED, READY_TO_PAY, PAID, LEFT }
+
     private final int id;
     private int satisfaction = GameConfig.START_SATISFACTION;
-    private CustomerState state = CustomerState.WAITING_FOR_TABLE;
+    private Status status = Status.WAITING;
     private Table table;
     private Order order;
-    private int servedOnTurn = -1;
-    private int readyToPayOnTurn = -1;
+    private int servedTurn = -1;
+    private int readyToPayTurn = -1;
 
     protected Customer(int id) {
         this.id = id;
     }
 
-    /** Points lost per turn while waiting, seated or ordered but not yet served. */
+    /** Points lost at the end of every turn in which this customer is still waiting for service. */
     protected abstract int waitLossPerTurn();
 
-    public abstract String getTypeName();
+    /**
+     * Deterministic food choice (documented rule): customer number n orders menu item
+     * ((n - 1) mod number of items). So customers 1 to 6 order Salad, Burger, Pasta, Salad, Burger, Pasta.
+     */
+    public MenuItem chooseDish(MenuItem[] menu) {
+        return menu[(id - 1) % menu.length];
+    }
 
-    /** Bill for a dish. Subclasses (e.g. VIP) can override for a discount. */
-    public int billFor(Dish dish) {
-        return dish.getPriceCents();
+    /** What this customer pays for the item, in cents. */
+    public int billFor(MenuItem item) {
+        return item.getPriceCents();
+    }
+
+    /** End-of-turn loss for an unserved customer. Returns true if the customer has now left. */
+    public boolean applyWaitingLoss() {
+        if (!isAwaitingService()) {
+            return false;
+        }
+        satisfaction = Math.max(0, satisfaction - waitLossPerTurn());
+        if (satisfaction == 0) {
+            leave();
+            return true;
+        }
+        return false;
+    }
+
+    /** Waiting, seated or ordered but not yet served: these customers lose satisfaction. */
+    public boolean isAwaitingService() {
+        return status == Status.WAITING || status == Status.SEATED || status == Status.ORDERED;
+    }
+
+    public boolean canBeSeated() {
+        return status == Status.WAITING;
+    }
+
+    public boolean canOrder() {
+        return status == Status.SEATED;
+    }
+
+    public void seatAt(Table t) {
+        table = t;
+        status = Status.SEATED;
+    }
+
+    public void placeOrder(Order o) {
+        order = o;
+        status = Status.ORDERED;
+    }
+
+    public void markServed(int turn) {
+        servedTurn = turn;
+        status = Status.SERVED;
     }
 
     /**
-     * Deterministic food choice (documented rule): customer number n picks
-     * Salad, Burger, Pasta, Salad, Burger, Pasta, ... i.e. menu item ((n - 1) mod 3).
+     * A customer served on an EARLIER turn has finished eating: becomes READY_TO_PAY.
+     * Returns true if that just happened.
      */
-    public Dish chooseDish() {
-        MenuItem[] items = MenuItem.values();
-        return items[(id - 1) % items.length];
+    public boolean finishEatingIfDue(int turn) {
+        if (status == Status.SERVED && servedTurn < turn) {
+            status = Status.READY_TO_PAY;
+            readyToPayTurn = turn;
+            return true;
+        }
+        return false;
+    }
+
+    /** The Cashier cannot charge a customer who became READY_TO_PAY this same turn. */
+    public boolean canPay(int turn) {
+        return status == Status.READY_TO_PAY && readyToPayTurn < turn;
+    }
+
+    public void markPaid() {
+        status = Status.PAID;
+    }
+
+    public void leave() {
+        status = Status.LEFT;
     }
 
     public int getId()                 { return id; }
     public int getSatisfaction()       { return satisfaction; }
-    public CustomerState getState()    { return state; }
+    public Status getStatus()          { return status; }
     public Table getTable()            { return table; }
     public Order getOrder()            { return order; }
-    public int getReadyToPayOnTurn()   { return readyToPayOnTurn; }
-    public boolean wasServed()         { return servedOnTurn >= 0; }
+    public int getReadyToPayTurn()     { return readyToPayTurn; }
+    public boolean hasBeenServed()     { return servedTurn >= 0; }
 
-    /** True while waiting, seated or ordered (i.e. not yet served): these lose satisfaction. */
-    public boolean isAwaitingService() {
-        return state == CustomerState.WAITING_FOR_TABLE
-            || state == CustomerState.SEATED
-            || state == CustomerState.ORDERED;
+    /** "Regular" for RegularCustomer, and so on. */
+    public String getTypeName() {
+        return getClass().getSimpleName().replace("Customer", "");
     }
-
-    /** End-of-turn loss. A customer who reaches 0 leaves. */
-    public void applyWaitingLoss() {
-        if (!isAwaitingService()) return;
-        satisfaction = Math.max(0, satisfaction - waitLossPerTurn());
-        if (satisfaction == 0) state = CustomerState.LEFT;
-    }
-
-    // ---- State transitions ----
-    public void seatAt(Table t)        { table = t; state = CustomerState.SEATED; }
-    public void receiveOrder(Order o)  { order = o; state = CustomerState.ORDERED; }
-    public void markServed(int turn)   { servedOnTurn = turn; state = CustomerState.EATING; }
-
-    /** A customer served on an EARLIER turn finishes eating and becomes READY_TO_PAY. */
-    public void finishEatingIfDue(int turn) {
-        if (state == CustomerState.EATING && servedOnTurn < turn) {
-            state = CustomerState.READY_TO_PAY;
-            readyToPayOnTurn = turn;
-        }
-    }
-
-    public void markPaid()             { state = CustomerState.PAID; }
 }
