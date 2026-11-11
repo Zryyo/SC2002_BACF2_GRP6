@@ -127,7 +127,7 @@ CHEF - choose ONE task:
   1) Prepare Burger for Customer #2 (1 unit(s) left)
   2) Wait (the Chef does nothing this turn)
 Choose 1-2:   >> Chef finishes Burger for Customer #2: READY (it can be served next turn at the earliest).
-  >> Cashier collects payment from Customer #1. Table 1 is free.
+  >> Cashier collects $9.00 from Customer #1. Table 1 is free.
 --- End of turn 5 ---
 Served: 1 | Unhappy departures: 0 | Revenue: $9.00 | Avg satisfaction (paid): 84.0 | Turns used: 5/18
 
@@ -206,7 +206,7 @@ CHEF - choose ONE task:
   1) Prepare Pasta for Customer #3 (2 unit(s) left)
   2) Wait (the Chef does nothing this turn)
 Choose 1-2:   >> Chef prepares Pasta for Customer #3 (1 unit(s) left).
-  >> Cashier collects payment from Customer #2. Table 2 is free.
+  >> Cashier collects $15.00 from Customer #2. Table 2 is free.
 --- End of turn 8 ---
 Served: 2 | Unhappy departures: 0 | Revenue: $24.00 | Avg satisfaction (paid): 84.0 | Turns used: 8/18
 
@@ -311,7 +311,7 @@ CHEF - choose ONE task:
   1) Prepare Salad for Customer #4 (1 unit(s) left)
   2) Wait (the Chef does nothing this turn)
 Choose 1-2:   >> Chef finishes Salad for Customer #4: READY (it can be served next turn at the earliest).
-  >> Cashier collects payment from Customer #3. Table 1 is free.
+  >> Cashier collects $18.00 from Customer #3. Table 1 is free.
 --- End of turn 12 ---
 Served: 3 | Unhappy departures: 0 | Revenue: $42.00 | Avg satisfaction (paid): 81.3 | Turns used: 12/18
   >> Customer #5 (Regular) arrives and joins the queue with satisfaction 100.
@@ -391,7 +391,7 @@ CHEF - choose ONE task:
   1) Prepare Burger for Customer #5 (1 unit(s) left)
   2) Wait (the Chef does nothing this turn)
 Choose 1-2:   >> Chef finishes Burger for Customer #5: READY (it can be served next turn at the earliest).
-  >> Cashier collects payment from Customer #4. Table 2 is free.
+  >> Cashier collects $9.00 from Customer #4. Table 2 is free.
 --- End of turn 15 ---
 Served: 4 | Unhappy departures: 0 | Revenue: $51.00 | Avg satisfaction (paid): 80.0 | Turns used: 15/18
   >> Customer #6 (Regular) arrives and joins the queue with satisfaction 100.
@@ -471,7 +471,7 @@ CHEF - choose ONE task:
   1) Prepare Pasta for Customer #6 (2 unit(s) left)
   2) Wait (the Chef does nothing this turn)
 Choose 1-2:   >> Chef prepares Pasta for Customer #6 (1 unit(s) left).
-  >> Cashier collects payment from Customer #5. Table 1 is free.
+  >> Cashier collects $15.00 from Customer #5. Table 1 is free.
 --- End of turn 18 ---
 Served: 5 | Unhappy departures: 0 | Revenue: $66.00 | Avg satisfaction (paid): 79.2 | Turns used: 18/18
 

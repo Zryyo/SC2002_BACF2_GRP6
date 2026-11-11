@@ -351,7 +351,7 @@ CHEF - choose ONE task:
   1) Prepare an order [not possible: nothing is waiting in the kitchen]
   2) Wait (the Chef does nothing this turn)
 Choose 1-2:   >> The Chef waits.
-  >> Cashier collects payment from Customer #3. Table 1 is free.
+  >> Cashier collects $18.00 from Customer #3. Table 1 is free.
 --- End of turn 12 ---
 Served: 1 | Unhappy departures: 0 | Revenue: $18.00 | Avg satisfaction (paid): 76.0 | Turns used: 12/18
   >> Customer #5 (Regular) arrives and joins the queue with satisfaction 100.

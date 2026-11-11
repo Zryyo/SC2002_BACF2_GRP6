@@ -113,7 +113,7 @@ public class ConsoleUI {
         }
     }
 
-    /** 900 -> "$9.00". The only place money is turned into text. */
+    // 900 -> "$9.00". Used to formatt for all money shown by the UI (the Cashier's payment message formats its own).
     private String formatMoney(int cents) {
         return String.format("$%d.%02d", cents / 100, cents % 100);
     }

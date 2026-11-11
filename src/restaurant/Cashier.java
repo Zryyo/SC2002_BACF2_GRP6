@@ -32,7 +32,8 @@ public class Cashier extends Staff {
         next.getTable().release();
         r.getLedger().recordPayment(order.getBillCents(), next.getSatisfaction());
         markActed();
-        return ActionResult.ok("Cashier collects payment from Customer #" + next.getId()
-                + ". Table " + next.getTable().getNumber() + " is free.");
+        int bill = order.getBillCents();
+        return ActionResult.ok("Cashier collects " + String.format("$%d.%02d", bill / 100, bill % 100)
+                + " from Customer #" + next.getId() + ". Table " + next.getTable().getNumber() + " is free.");
     }
 }
