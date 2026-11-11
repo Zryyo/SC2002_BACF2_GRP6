@@ -24,6 +24,8 @@ To replay the reproducible test runs (see [Testing](#testing)):
 java -cp out restaurant.RestaurantRushApp < tests/win_input.txt
 java -cp out restaurant.RestaurantRushApp < tests/lose_input.txt
 java -cp out restaurant.RestaurantRushApp < tests/brief_example_input.txt
+java -cp out restaurant.RestaurantRushApp < tests/stage2_win_input.txt
+java -cp out restaurant.RestaurantRushApp < tests/stage2_lose_input.txt
 ```
 
 ## Game setup
@@ -65,25 +67,28 @@ Each turn then runs these six steps in order.
 
 ## Design decisions
 
-- **Customers choose their own food.** Deterministic rule: customer number *n* orders menu item *(n - 1) mod 3*, so customers 1 to 6 order Salad, Burger, Pasta, Salad, Burger, Pasta. The rule lives in `Customer.chooseDish`, and the choice is shown when the order is placed.
-- **Money is stored as integer cents** and turned into text only in `ConsoleUI`, with two decimals.
+- **Customers choose their own food.** Deterministic rule: customer number *n* orders menu item *(n - 1) mod 3*, so customers 1 to 6 order Salad, Burger, Pasta, Salad, Burger, Pasta. The rule lives in `Customer.chooseDish`, and the choice is shown when the order is placed. In Stage 2 the Critic overrides this rule (see below), so customer 4 orders Pasta instead of Salad.
+- **Money is stored as integer cents** and shown with two decimals: by `ConsoleUI`, and by the Cashier's payment message.
 - **Rules stay out of the UI.** `ConsoleUI` only shows the state and collects the manager's choice. Rules live in the domain classes (`Customer`, `Order`, `Waiter`, `Chef`, `Cashier`, `Restaurant`) and in `Game`.
 - **Manager choices are objects.** Each possible task is a `StaffAction` (`SeatCustomerAction`, `TakeOrderAction`, `ServeOrderAction`, `PrepareOrderAction`, `WaitAction`). `Game` builds the list of options, `ConsoleUI` shows their labels, and the chosen action runs itself. A new kind of task is a new class implementing `StaffAction`; `Game` only has to add it to its list of options.
 - **Waiter, then Chef.** The Waiter's valid action takes effect immediately, then the Chef's options are built. This lets the Chef work on an order the Waiter took in the same turn.
 - **Impossible tasks stay in the menu with the reason.** Choosing one explains why it failed and asks again, and the staff task is not used up.
 - **Behaviour that differs by customer type sits in overridable methods** (`waitLossPerTurn`, `billFor`, `chooseDish`), so `Game` never checks what type a customer is.
+- **Customer types (Stage 2).** Regular loses 8 per waiting turn and pays full price. VIP loses 5 and pays 90% of the price, rounded half up to a whole cent. Critic loses 12, pays full price, and always orders the dish with the most preparation units (ties: higher price), which is Pasta on the base menu.
+- **Who arrives (Stage 2).** Still six arrivals on turns 1, 4, 7, 10, 13 and 16. Turn 4 is a VIP (customer 2), turn 10 is a Critic (customer 4), the rest are Regular. `Game.createArrival` picks the type by turn number and is the only place that names the customer subclasses.
 - **Single source folder (`src/restaurant`) with git tags.** Each stage is a tagged commit on `main`, not a copy of the code.
 
-## Project structure (Stage 1)
+## Project structure (Stage 2)
 
 | File | Responsibility |
 | --- | --- |
 | `RestaurantRushApp` | Entry point: creates the screen and the game and starts it |
 | `Game` | Runs the 18 turns and the six steps, builds the staff options, decides Victory or Defeat |
 | `ConsoleUI` | Command-line screen: displays state, reads the manager's choice, formats money |
-| `GameConfig`, `GameResult` | Base-setting numbers and the Victory or Defeat result |
+| `GameConfig`, `GameResult` | Base-setting numbers (including which arrivals are VIP or Critic) and the Victory or Defeat result |
 | `Restaurant` | Game state: tables, waiting queue, customers, staff, ledger |
 | `Customer`, `RegularCustomer` | Customer behaviour and lifecycle (`Customer.Status` is a nested enum) |
+| `VIPCustomer`, `CriticCustomer` | Stage 2 customer types: override the waiting loss, the bill (VIP) and the dish choice (Critic) |
 | `Order` | One order: preparation progress, locked bill, legal status changes (`Order.Status` is a nested enum) |
 | `MenuItem` | Salad, Burger and Pasta with price in cents and preparation units |
 | `Table` | A table and its occupant |
@@ -98,9 +103,13 @@ Reproducible runs are in `tests/` (details in `tests/TEST_NOTES.md`). Each input
 
 | Run | Input file | Result |
 | --- | --- | --- |
+| Stage 2 victory, with a VIP and a Critic | `tests/stage2_win_input.txt` | 5 paid, $73.50, average satisfaction 75.6 |
+| Stage 2 defeat, with a VIP and a Critic | `tests/stage2_lose_input.txt` | 0 paid, $0.00, average satisfaction N/A, 2 unhappy departures (customer 1 and the Critic) |
 | Victory | `tests/win_input.txt` | 5 paid, $66.00, average satisfaction 79.2 |
 | Defeat | `tests/lose_input.txt` | 0 paid, $0.00, average satisfaction N/A, 2 unhappy departures |
 | Worked example from the brief (Section 3.3) | `tests/brief_example_input.txt` | Customer 3 (Pasta) is seated on turn 7, paid $18.00 on turn 12 with satisfaction 76 recorded, which is the brief's example shifted by 6 turns |
+
+The three Stage 1 runs replay exactly at tag `stage-1`. From Stage 2 on, customers 2 and 4 are a VIP and a Critic, so those runs play out differently; use the `stage2_*` runs instead.
 
 To check a run still behaves the same, nothing should print:
 
@@ -117,8 +126,13 @@ Basic restaurant operation: Regular customers, menu, Waiter, Chef, Cashier, Tabl
 ### Stage 1 to Stage 2 (VIP and Critic customers)
 
 - **Compare:** https://github.com/Zryyo/SC2002_BACF2_GRP6/compare/stage-1...stage-2
-- **New files:** _TODO_
-- **Changed or deleted files and why:** _TODO_
+- **New files:** `VIPCustomer.java`, `CriticCustomer.java`; `tests/stage2_win_input.txt` and `tests/stage2_lose_input.txt` with their expected outputs.
+- **Changed or deleted files and why:**
+  - `Game.java`: new private `createArrival(turn)`, called by `stepArrivals` instead of always creating a `RegularCustomer`. The brief requires at least one VIP and one Critic among the six arrivals, and this is the one place that decides which type arrives.
+  - `GameConfig.java`: new `VIP_ARRIVAL_TURNS` = {4} and `CRITIC_ARRIVAL_TURNS` = {10}, so the arrival setup stays in one place.
+  - `README.md` and `tests/TEST_NOTES.md`: Stage 2 rules and test runs.
+  - No files deleted.
+- **Unchanged and why:** `Customer` and `RegularCustomer` already had overridable `waitLossPerTurn`, `billFor` and `chooseDish`, so the new types only override them. No other class changed, since every customer type follows the same order and service flow. With the VIP and Critic turns emptied, the three Stage 1 runs replay byte for byte.
 
 ### Stage 2 to Stage 3 (Host, ComboMeal, Happy Hour)
 

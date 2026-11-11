@@ -2,13 +2,17 @@ package restaurant;
 
 import java.util.Set;
 
-/** The base-setting numbers from the brief, kept in one place. */
+// The base-setting numbers from the brief
 public final class GameConfig {
     private GameConfig() {}
 
     public static final int MAX_TURNS = 18;
     public static final int TABLE_COUNT = 2;
     public static final Set<Integer> ARRIVAL_TURNS = Set.of(1, 4, 7, 10, 13, 16);
+
+    //VIP arrives at turn 4 and Critic arrives at turn 10 for reproducibility
+    public static final Set<Integer> VIP_ARRIVAL_TURNS = Set.of(4);
+    public static final Set<Integer> CRITIC_ARRIVAL_TURNS = Set.of(10);
     public static final int START_SATISFACTION = 100;
 
     // Victory targets: all three must be met after the last turn.

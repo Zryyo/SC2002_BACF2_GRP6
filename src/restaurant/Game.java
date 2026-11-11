@@ -43,11 +43,22 @@ public class Game {
     // Step 1
     private void stepArrivals(int turn) {
         if (GameConfig.ARRIVAL_TURNS.contains(turn)) {
-            Customer c = new RegularCustomer(nextCustomerId++);
+            Customer c = createArrival(turn);
             restaurant.addArrival(c);
             ui.showMessage("Customer #" + c.getId() + " (" + c.getTypeName()
                     + ") arrives and joins the queue with satisfaction " + c.getSatisfaction() + ".");
         }
+    }
+
+    //Modifications to enable create
+    private Customer createArrival(int turn) {
+        if (GameConfig.VIP_ARRIVAL_TURNS.contains(turn)) {
+            return new VIPCustomer(nextCustomerId++);
+        }
+        if (GameConfig.CRITIC_ARRIVAL_TURNS.contains(turn)) {
+            return new CriticCustomer(nextCustomerId++);
+        }
+        return new RegularCustomer(nextCustomerId++);
     }
 
     // Steps 2 and 3 (Waiter). A failed choice explains why and asks again; the task is not used up.
