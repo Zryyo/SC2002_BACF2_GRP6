@@ -15,14 +15,9 @@ public class Waiter extends Staff {
         if (hasActed()) {
             return ActionResult.fail("The Waiter has already done a task this turn.");
         }
-        if (c == null || t == null) {
-            return ActionResult.fail("Nobody can be seated right now: no customer is waiting, or no table is free.");
-        }
-        if (!c.canBeSeated()) {
-            return ActionResult.fail("Customer #" + c.getId() + " is not waiting for a table.");
-        }
-        if (!t.isFree()) {
-            return ActionResult.fail("Table " + t.getNumber() + " is already occupied.");
+        String problem = r.seatingProblem(c, t);   // Stage 3: same rule as the Host
+        if (problem != null) {
+            return ActionResult.fail(problem);
         }
 
         r.seatCustomer(c, t);
@@ -30,7 +25,7 @@ public class Waiter extends Staff {
         return ActionResult.ok("Waiter seats Customer #" + c.getId() + " at Table " + t.getNumber() + ".");
     }
 
-    public ActionResult takeOrder(Restaurant r, Customer c) {
+    public ActionResult takeOrder(Restaurant r, Customer c, int turn) {
         if (hasActed()) {
             return ActionResult.fail("The Waiter has already done a task this turn.");
         }
@@ -41,11 +36,15 @@ public class Waiter extends Staff {
             return ActionResult.fail("Customer #" + c.getId() + " is not waiting to order.");
         }
 
-        MenuItem item = c.chooseDish(MenuItem.values());   // the customer chooses, never the manager
-        int bill = c.billFor(item);                        // locked now
+        Dish item = c.chooseDish(r.getMenu());             // the customer chooses, never the manager
+        int bill = c.billFor(item);                        // customer's own discount first (VIP)...
+        HappyHour happyHour = r.getHappyHour();
+        bill = happyHour.applyDiscount(bill, turn);        // ...then Happy Hour. The bill is locked now.
         c.placeOrder(new Order(c, item, bill));
         markActed();
-        return ActionResult.ok("Customer #" + c.getId() + " orders " + item.getDisplayName() + ".");
+        String note = happyHour.isActive(turn) ? " (Happy Hour price)" : "";
+        return ActionResult.ok("Customer #" + c.getId() + " orders " + item.getDisplayName()
+                + " for " + String.format("$%d.%02d", bill / 100, bill % 100) + note + ".");
     }
 
     public ActionResult serve(Order o, int turn) {

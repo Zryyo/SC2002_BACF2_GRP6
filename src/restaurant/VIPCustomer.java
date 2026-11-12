@@ -14,7 +14,7 @@ public class VIPCustomer extends Customer {
 
     // 90% of the price, rounded half up to a whole cent.
     @Override
-    public int billFor(MenuItem item) {
+    public int billFor(Dish item) {
         return (item.getPriceCents() * 90 + 50) / 100;
     }
 }

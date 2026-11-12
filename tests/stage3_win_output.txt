@@ -1,0 +1,574 @@
+
+---- Start of turn 1: switch on Happy Hour? (once per game, lasts this turn and the next) ----
+  1) No, not now
+  2) Yes, switch on Happy Hour
+Choose 1-2:   >> Customer #1 (Regular) arrives and joins the queue with satisfaction 100.
+
+==================== TURN 1 of 18 ====================
+Revenue: $0.00    Avg satisfaction (paid customers): N/A
+Happy Hour: not used yet (can be switched on once)
+Waiting queue:
+   #1 Regular | satisfaction 100 | WAITING
+Tables:
+   Table 1: free
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [1 queued, 2 free table(s)]
+   Waiter (1 task): seat a customer [1 queued, 2 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+
+HOST - choose ONE seating (in addition to the Waiter):
+  1) Host seats Customer #1 at Table 1
+  2) Host seats Customer #1 at Table 2
+  3) Wait (the Host does nothing this turn)
+Choose 1-3:   >> Host seats Customer #1 at Table 1.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #1
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Customer #1 orders Salad for $9.00.
+
+CHEF - choose ONE task:
+  1) Prepare Salad for Customer #1 (1 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef finishes Salad for Customer #1: READY (it can be served next turn at the earliest).
+--- End of turn 1 ---
+Served: 0 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 1/18
+
+---- Start of turn 2: switch on Happy Hour? (once per game, lasts this turn and the next) ----
+  1) No, not now
+  2) Yes, switch on Happy Hour
+Choose 1-2: 
+==================== TURN 2 of 18 ====================
+Revenue: $0.00    Avg satisfaction (paid customers): N/A
+Happy Hour: not used yet (can be switched on once)
+Waiting queue: (empty)
+Tables:
+   Table 1: #1 Regular | satisfaction 92 | ORDERED | order: Salad READY ($9.00)
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 1 free table(s)], take an order [0 seated], serve [1 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve Salad to Customer #1
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Waiter serves Salad to Customer #1.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+--- End of turn 2 ---
+Served: 1 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 2/18
+
+---- Start of turn 3: switch on Happy Hour? (once per game, lasts this turn and the next) ----
+  1) No, not now
+  2) Yes, switch on Happy Hour
+Choose 1-2: 
+==================== TURN 3 of 18 ====================
+Revenue: $0.00    Avg satisfaction (paid customers): N/A
+Happy Hour: not used yet (can be switched on once)
+Waiting queue: (empty)
+Tables:
+   Table 1: #1 Regular | satisfaction 92 | SERVED | order: Salad SERVED ($9.00)
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 1 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> The Waiter waits.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+  >> Customer #1 has finished eating and is ready to pay.
+--- End of turn 3 ---
+Served: 1 | Unhappy departures: 0 | Revenue: $0.00 | Avg satisfaction (paid): N/A | Turns used: 3/18
+
+---- Start of turn 4: switch on Happy Hour? (once per game, lasts this turn and the next) ----
+  1) No, not now
+  2) Yes, switch on Happy Hour
+Choose 1-2:   >> Happy Hour is ON for this turn and the next: 20% off orders taken, and waiting customers recover 15 satisfaction at turn start.
+  >> Customer #2 (VIP) arrives and joins the queue with satisfaction 100.
+
+==================== TURN 4 of 18 ====================
+Revenue: $0.00    Avg satisfaction (paid customers): N/A
+Happy Hour: ACTIVE, 2 turn(s) left including this one (orders taken now get 20% off)
+Waiting queue:
+   #2 VIP | satisfaction 100 | WAITING
+Tables:
+   Table 1: #1 Regular | satisfaction 92 | READY_TO_PAY | order: Salad SERVED ($9.00)
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [1 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [1 queued, 1 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+
+HOST - choose ONE seating (in addition to the Waiter):
+  1) Host seats Customer #2 at Table 2
+  2) Wait (the Host does nothing this turn)
+Choose 1-2:   >> Host seats Customer #2 at Table 2.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #2
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Customer #2 orders Burger for $10.80 (Happy Hour price).
+
+CHEF - choose ONE task:
+  1) Prepare Burger for Customer #2 (1 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef finishes Burger for Customer #2: READY (it can be served next turn at the earliest).
+  >> Cashier collects $9.00 from Customer #1. Table 1 is free.
+--- End of turn 4 ---
+Served: 1 | Unhappy departures: 0 | Revenue: $9.00 | Avg satisfaction (paid): 92.0 | Turns used: 4/18
+
+==================== TURN 5 of 18 ====================
+Revenue: $9.00    Avg satisfaction (paid customers): 92.0
+Happy Hour: ACTIVE, 1 turn(s) left including this one (orders taken now get 20% off)
+Waiting queue: (empty)
+Tables:
+   Table 1: free
+   Table 2: #2 VIP | satisfaction 100 | ORDERED | order: Burger READY ($10.80)
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 1 free table(s)], take an order [0 seated], serve [1 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve Burger to Customer #2
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Waiter serves Burger to Customer #2.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+--- End of turn 5 ---
+Served: 2 | Unhappy departures: 0 | Revenue: $9.00 | Avg satisfaction (paid): 92.0 | Turns used: 5/18
+
+==================== TURN 6 of 18 ====================
+Revenue: $9.00    Avg satisfaction (paid customers): 92.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: free
+   Table 2: #2 VIP | satisfaction 100 | SERVED | order: Burger SERVED ($10.80)
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 1 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> The Waiter waits.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+  >> Customer #2 has finished eating and is ready to pay.
+--- End of turn 6 ---
+Served: 2 | Unhappy departures: 0 | Revenue: $9.00 | Avg satisfaction (paid): 92.0 | Turns used: 6/18
+  >> Customer #3 (Regular) arrives and joins the queue with satisfaction 100.
+
+==================== TURN 7 of 18 ====================
+Revenue: $9.00    Avg satisfaction (paid customers): 92.0
+Happy Hour: used
+Waiting queue:
+   #3 Regular | satisfaction 100 | WAITING
+Tables:
+   Table 1: free
+   Table 2: #2 VIP | satisfaction 100 | READY_TO_PAY | order: Burger SERVED ($10.80)
+Staff tasks available:
+   Host (1 seating): seat a queued customer [1 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [1 queued, 1 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+
+HOST - choose ONE seating (in addition to the Waiter):
+  1) Host seats Customer #3 at Table 1
+  2) Wait (the Host does nothing this turn)
+Choose 1-2:   >> Host seats Customer #3 at Table 1.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #3
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Customer #3 orders Pasta for $18.00.
+
+CHEF - choose ONE task:
+  1) Prepare Pasta for Customer #3 (2 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef prepares Pasta for Customer #3 (1 unit(s) left).
+  >> Cashier collects $10.80 from Customer #2. Table 2 is free.
+--- End of turn 7 ---
+Served: 2 | Unhappy departures: 0 | Revenue: $19.80 | Avg satisfaction (paid): 96.0 | Turns used: 7/18
+
+==================== TURN 8 of 18 ====================
+Revenue: $19.80    Avg satisfaction (paid customers): 96.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: #3 Regular | satisfaction 92 | ORDERED | order: Pasta PREPARING ($18.00) 1 unit(s) left
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 1 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [1 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> The Waiter waits.
+
+CHEF - choose ONE task:
+  1) Prepare Pasta for Customer #3 (1 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef finishes Pasta for Customer #3: READY (it can be served next turn at the earliest).
+--- End of turn 8 ---
+Served: 2 | Unhappy departures: 0 | Revenue: $19.80 | Avg satisfaction (paid): 96.0 | Turns used: 8/18
+
+==================== TURN 9 of 18 ====================
+Revenue: $19.80    Avg satisfaction (paid customers): 96.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: #3 Regular | satisfaction 84 | ORDERED | order: Pasta READY ($18.00)
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 1 free table(s)], take an order [0 seated], serve [1 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve Pasta to Customer #3
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Waiter serves Pasta to Customer #3.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+--- End of turn 9 ---
+Served: 3 | Unhappy departures: 0 | Revenue: $19.80 | Avg satisfaction (paid): 96.0 | Turns used: 9/18
+  >> Customer #4 (Critic) arrives and joins the queue with satisfaction 100.
+
+==================== TURN 10 of 18 ====================
+Revenue: $19.80    Avg satisfaction (paid customers): 96.0
+Happy Hour: used
+Waiting queue:
+   #4 Critic | satisfaction 100 | WAITING
+Tables:
+   Table 1: #3 Regular | satisfaction 84 | SERVED | order: Pasta SERVED ($18.00)
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [1 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [1 queued, 1 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+
+HOST - choose ONE seating (in addition to the Waiter):
+  1) Host seats Customer #4 at Table 2
+  2) Wait (the Host does nothing this turn)
+Choose 1-2:   >> Host seats Customer #4 at Table 2.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #4
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Customer #4 orders Salad + Pasta combo for $24.30.
+
+CHEF - choose ONE task:
+  1) Prepare Salad + Pasta combo for Customer #4 (3 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef prepares Salad + Pasta combo for Customer #4 (2 unit(s) left).
+  >> Customer #3 has finished eating and is ready to pay.
+--- End of turn 10 ---
+Served: 3 | Unhappy departures: 0 | Revenue: $19.80 | Avg satisfaction (paid): 96.0 | Turns used: 10/18
+
+==================== TURN 11 of 18 ====================
+Revenue: $19.80    Avg satisfaction (paid customers): 96.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: #3 Regular | satisfaction 84 | READY_TO_PAY | order: Pasta SERVED ($18.00)
+   Table 2: #4 Critic | satisfaction 88 | ORDERED | order: Salad + Pasta combo PREPARING ($24.30) 2 unit(s) left
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 0 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 0 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [1 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> The Waiter waits.
+
+CHEF - choose ONE task:
+  1) Prepare Salad + Pasta combo for Customer #4 (2 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef prepares Salad + Pasta combo for Customer #4 (1 unit(s) left).
+  >> Cashier collects $18.00 from Customer #3. Table 1 is free.
+--- End of turn 11 ---
+Served: 3 | Unhappy departures: 0 | Revenue: $37.80 | Avg satisfaction (paid): 92.0 | Turns used: 11/18
+
+==================== TURN 12 of 18 ====================
+Revenue: $37.80    Avg satisfaction (paid customers): 92.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: free
+   Table 2: #4 Critic | satisfaction 76 | ORDERED | order: Salad + Pasta combo PREPARING ($24.30) 1 unit(s) left
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 1 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [1 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> The Waiter waits.
+
+CHEF - choose ONE task:
+  1) Prepare Salad + Pasta combo for Customer #4 (1 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef finishes Salad + Pasta combo for Customer #4: READY (it can be served next turn at the earliest).
+--- End of turn 12 ---
+Served: 3 | Unhappy departures: 0 | Revenue: $37.80 | Avg satisfaction (paid): 92.0 | Turns used: 12/18
+  >> Customer #5 (Regular) arrives and joins the queue with satisfaction 100.
+
+==================== TURN 13 of 18 ====================
+Revenue: $37.80    Avg satisfaction (paid customers): 92.0
+Happy Hour: used
+Waiting queue:
+   #5 Regular | satisfaction 100 | WAITING
+Tables:
+   Table 1: free
+   Table 2: #4 Critic | satisfaction 64 | ORDERED | order: Salad + Pasta combo READY ($24.30)
+Staff tasks available:
+   Host (1 seating): seat a queued customer [1 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [1 queued, 1 free table(s)], take an order [0 seated], serve [1 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+
+HOST - choose ONE seating (in addition to the Waiter):
+  1) Host seats Customer #5 at Table 1
+  2) Wait (the Host does nothing this turn)
+Choose 1-2:   >> Host seats Customer #5 at Table 1.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #5
+  3) Serve Salad + Pasta combo to Customer #4
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Waiter serves Salad + Pasta combo to Customer #4.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+--- End of turn 13 ---
+Served: 4 | Unhappy departures: 0 | Revenue: $37.80 | Avg satisfaction (paid): 92.0 | Turns used: 13/18
+
+==================== TURN 14 of 18 ====================
+Revenue: $37.80    Avg satisfaction (paid customers): 92.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: #5 Regular | satisfaction 92 | SEATED
+   Table 2: #4 Critic | satisfaction 64 | SERVED | order: Salad + Pasta combo SERVED ($24.30)
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 0 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 0 free table(s)], take an order [1 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #5
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Customer #5 orders Burger + Salad combo for $21.60.
+
+CHEF - choose ONE task:
+  1) Prepare Burger + Salad combo for Customer #5 (2 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef prepares Burger + Salad combo for Customer #5 (1 unit(s) left).
+  >> Customer #4 has finished eating and is ready to pay.
+--- End of turn 14 ---
+Served: 4 | Unhappy departures: 0 | Revenue: $37.80 | Avg satisfaction (paid): 92.0 | Turns used: 14/18
+
+==================== TURN 15 of 18 ====================
+Revenue: $37.80    Avg satisfaction (paid customers): 92.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: #5 Regular | satisfaction 84 | ORDERED | order: Burger + Salad combo PREPARING ($21.60) 1 unit(s) left
+   Table 2: #4 Critic | satisfaction 64 | READY_TO_PAY | order: Salad + Pasta combo SERVED ($24.30)
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 0 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 0 free table(s)], take an order [0 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [1 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> The Waiter waits.
+
+CHEF - choose ONE task:
+  1) Prepare Burger + Salad combo for Customer #5 (1 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef finishes Burger + Salad combo for Customer #5: READY (it can be served next turn at the earliest).
+  >> Cashier collects $24.30 from Customer #4. Table 2 is free.
+--- End of turn 15 ---
+Served: 4 | Unhappy departures: 0 | Revenue: $62.10 | Avg satisfaction (paid): 85.0 | Turns used: 15/18
+  >> Customer #6 (Regular) arrives and joins the queue with satisfaction 100.
+
+==================== TURN 16 of 18 ====================
+Revenue: $62.10    Avg satisfaction (paid customers): 85.0
+Happy Hour: used
+Waiting queue:
+   #6 Regular | satisfaction 100 | WAITING
+Tables:
+   Table 1: #5 Regular | satisfaction 76 | ORDERED | order: Burger + Salad combo READY ($21.60)
+   Table 2: free
+Staff tasks available:
+   Host (1 seating): seat a queued customer [1 queued, 1 free table(s)]
+   Waiter (1 task): seat a customer [1 queued, 1 free table(s)], take an order [0 seated], serve [1 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+
+HOST - choose ONE seating (in addition to the Waiter):
+  1) Host seats Customer #6 at Table 2
+  2) Wait (the Host does nothing this turn)
+Choose 1-2:   >> Host seats Customer #6 at Table 2.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #6
+  3) Serve Burger + Salad combo to Customer #5
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Waiter serves Burger + Salad combo to Customer #5.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+--- End of turn 16 ---
+Served: 5 | Unhappy departures: 0 | Revenue: $62.10 | Avg satisfaction (paid): 85.0 | Turns used: 16/18
+
+==================== TURN 17 of 18 ====================
+Revenue: $62.10    Avg satisfaction (paid customers): 85.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: #5 Regular | satisfaction 76 | SERVED | order: Burger + Salad combo SERVED ($21.60)
+   Table 2: #6 Regular | satisfaction 92 | SEATED
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 0 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 0 free table(s)], take an order [1 seated], serve [0 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take the order of Customer #6
+  3) Serve a dish [not possible: no dish is READY]
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Customer #6 orders Salad for $9.00.
+
+CHEF - choose ONE task:
+  1) Prepare Salad for Customer #6 (1 unit(s) left)
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> Chef finishes Salad for Customer #6: READY (it can be served next turn at the earliest).
+  >> Customer #5 has finished eating and is ready to pay.
+--- End of turn 17 ---
+Served: 5 | Unhappy departures: 0 | Revenue: $62.10 | Avg satisfaction (paid): 85.0 | Turns used: 17/18
+
+==================== TURN 18 of 18 ====================
+Revenue: $62.10    Avg satisfaction (paid customers): 85.0
+Happy Hour: used
+Waiting queue: (empty)
+Tables:
+   Table 1: #5 Regular | satisfaction 76 | READY_TO_PAY | order: Burger + Salad combo SERVED ($21.60)
+   Table 2: #6 Regular | satisfaction 84 | ORDERED | order: Salad READY ($9.00)
+Staff tasks available:
+   Host (1 seating): seat a queued customer [0 queued, 0 free table(s)]
+   Waiter (1 task): seat a customer [0 queued, 0 free table(s)], take an order [0 seated], serve [1 READY]
+   Chef (1 unit):   prepare an order [0 in the kitchen]
+   Cashier:         automatic, one payment per turn
+  >> Host: nobody can be seated this turn.
+
+WAITER - choose ONE task:
+  1) Seat a customer [not possible: nobody is waiting, or no table is free]
+  2) Take an order [not possible: nobody is seated and waiting to order]
+  3) Serve Salad to Customer #6
+  4) Wait (the Waiter does nothing this turn)
+Choose 1-4:   >> Waiter serves Salad to Customer #6.
+
+CHEF - choose ONE task:
+  1) Prepare an order [not possible: nothing is waiting in the kitchen]
+  2) Wait (the Chef does nothing this turn)
+Choose 1-2:   >> The Chef waits.
+  >> Cashier collects $21.60 from Customer #5. Table 1 is free.
+--- End of turn 18 ---
+Served: 6 | Unhappy departures: 0 | Revenue: $83.70 | Avg satisfaction (paid): 83.2 | Turns used: 18/18
+
+==================== GAME OVER ====================
+Paid customers:   5   (need at least 4)
+Revenue:          $83.70   (need at least $45.00)
+Avg satisfaction: 83.2   (need at least 60)
+RESULT: VICTORY
