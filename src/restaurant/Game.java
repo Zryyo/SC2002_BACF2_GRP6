@@ -3,6 +3,7 @@ package restaurant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.function.Function;
 
 /**
  * Runs the game: 18 turns, each following the six steps in the brief.
@@ -31,13 +32,26 @@ public class Game {
     private void runTurn(int turn) {
         restaurant.startTurn();
 
+        stepHappyHour(turn);                 // Stage 3: switched on at the start of a turn, before arrivals
         stepArrivals(turn);                  // 1
         ui.showTurnStart(turn, restaurant);
-        stepWaiter(turn);                    // 2 and 3: the Waiter acts first...
+        stepHost(turn);                      // Stage 3: the Host seats before the Waiter acts...
+        stepWaiter(turn);                    // 2 and 3: ...so the Waiter can take that customer's order. Waiter first...
         stepChef(turn);                      //          ...then the Chef (and may cook what the Waiter just took)
         stepEatingAndPayment(turn);          // 4
         stepWaitingAndAbandonment();         // 5
         ui.showEndOfTurn(turn, restaurant);
+    }
+
+    // Stage 3: offer Happy Hour until it has been used; while active, waiting customers recover satisfaction.
+    private void stepHappyHour(int turn) {
+        HappyHour happyHour = restaurant.getHappyHour();
+        if (!happyHour.hasBeenUsed() && ui.askActivateHappyHour(turn)) {
+            ui.showMessage(happyHour.activate(turn).getMessage());
+        }
+        if (happyHour.isActive(turn)) {
+            happyHour.recoverSatisfaction(restaurant);
+        }
     }
 
     // Step 1
@@ -61,24 +75,31 @@ public class Game {
         return new RegularCustomer(nextCustomerId++);
     }
 
+    // Stage 3 (Host): seats at most one queued customer, in addition to the Waiter.
+    // If nobody can be seated there is nothing to choose, so the Host is skipped.
+    private void stepHost(int turn) {
+        List<StaffAction> options = hostOptions();
+        if (options.size() == 1) {
+            ui.showMessage("Host: nobody can be seated this turn.");
+            return;
+        }
+        runChoice(ui::chooseHostAction, options, turn);
+    }
+
     // Steps 2 and 3 (Waiter). A failed choice explains why and asks again; the task is not used up.
     private void stepWaiter(int turn) {
-        List<StaffAction> options = waiterOptions();
-        while (true) {
-            StaffAction chosen = ui.chooseWaiterAction(options);
-            ActionResult result = chosen.execute(restaurant, turn);
-            ui.showMessage(result.getMessage());
-            if (result.isSuccess()) {
-                return;
-            }
-        }
+        runChoice(ui::chooseWaiterAction, waiterOptions(), turn);
     }
 
     // Steps 2 and 3 (Chef). The options are built now, so an order the Waiter just took is included.
     private void stepChef(int turn) {
-        List<StaffAction> options = chefOptions();
+        runChoice(ui::chooseChefAction, chefOptions(), turn);
+    }
+
+    /** Asks until a choice succeeds. A failed choice explains why and does not use up the staff task. */
+    private void runChoice(Function<List<StaffAction>, StaffAction> ask, List<StaffAction> options, int turn) {
         while (true) {
-            StaffAction chosen = ui.chooseChefAction(options);
+            StaffAction chosen = ask.apply(options);
             ActionResult result = chosen.execute(restaurant, turn);
             ui.showMessage(result.getMessage());
             if (result.isSuccess()) {
@@ -103,6 +124,18 @@ public class Game {
         for (Customer c : restaurant.applyEndOfTurnWaiting()) {
             ui.showMessage("Customer #" + c.getId() + " ran out of patience and LEFT without paying.");
         }
+    }
+
+    /** Stage 3: every seating the Host could do, plus Wait. */
+    private List<StaffAction> hostOptions() {
+        List<StaffAction> options = new ArrayList<>();
+        for (Customer c : restaurant.getWaitingQueue()) {
+            for (Table t : restaurant.getFreeTables()) {
+                options.add(new HostSeatAction(c, t));
+            }
+        }
+        options.add(new WaitAction("Host"));
+        return options;
     }
 
     /** Every Waiter task the manager could pick. Tasks that cannot be done are listed with the reason. */

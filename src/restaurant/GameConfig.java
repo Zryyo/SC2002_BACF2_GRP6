@@ -14,6 +14,13 @@ public final class GameConfig {
     public static final Set<Integer> VIP_ARRIVAL_TURNS = Set.of(4);
     public static final Set<Integer> CRITIC_ARRIVAL_TURNS = Set.of(10);
     public static final int START_SATISFACTION = 100;
+    public static final int MAX_SATISFACTION = 100;
+
+    // Stage 3: ComboMeal and Happy Hour numbers.
+    public static final int COMBO_DISCOUNT_PERCENT = 10;
+    public static final int HAPPY_HOUR_TURNS = 2;               // the turn it is switched on, and the next
+    public static final int HAPPY_HOUR_DISCOUNT_PERCENT = 20;
+    public static final int HAPPY_HOUR_RECOVERY = 15;
 
     // Victory targets: all three must be met after the last turn.
     public static final int TARGET_PAID = 4;

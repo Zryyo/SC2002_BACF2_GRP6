@@ -17,6 +17,6 @@ public class TakeOrderAction implements StaffAction {
 
     @Override
     public ActionResult execute(Restaurant r, int turn) {
-        return r.getWaiter().takeOrder(r, customer);
+        return r.getWaiter().takeOrder(r, customer, turn);   // Stage 3: turn needed for Happy Hour
     }
 }

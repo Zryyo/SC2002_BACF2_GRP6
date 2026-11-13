@@ -20,6 +20,15 @@ public class ConsoleUI {
         System.out.println("Revenue: " + formatMoney(ledger.getRevenueCents())
                 + "    Avg satisfaction (paid customers): " + averageText(ledger));
 
+        HappyHour happyHour = r.getHappyHour();
+        if (happyHour.isActive(turn)) {
+            int left = happyHour.remainingTurns(turn);
+            System.out.println("Happy Hour: ACTIVE, " + left + " turn(s) left including this one"
+                    + " (orders taken now get " + GameConfig.HAPPY_HOUR_DISCOUNT_PERCENT + "% off)");
+        } else {
+            System.out.println("Happy Hour: " + (happyHour.hasBeenUsed() ? "used" : "not used yet (can be switched on once)"));
+        }
+
         System.out.println("Waiting queue:" + (queue.isEmpty() ? " (empty)" : ""));
         for (Customer c : queue) {
             System.out.println("   " + describe(c));
@@ -41,11 +50,26 @@ public class ConsoleUI {
             }
         }
         System.out.println("Staff tasks available:");
+        System.out.println("   Host (1 seating): seat a queued customer [" + queue.size() + " queued, "
+                + r.getFreeTables().size() + " free table(s)]");
         System.out.println("   Waiter (1 task): seat a customer [" + queue.size() + " queued, "
                 + r.getFreeTables().size() + " free table(s)], take an order ["
                 + r.getSeatedWithoutOrder().size() + " seated], serve [" + ready + " READY]");
         System.out.println("   Chef (1 unit):   prepare an order [" + r.getOrdersInPreparation().size() + " in the kitchen]");
         System.out.println("   Cashier:         automatic, one payment per turn");
+    }
+
+    /** Stage 3: asked at the start of each turn until Happy Hour has been used. */
+    public boolean askActivateHappyHour(int turn) {
+        System.out.println();
+        System.out.println("---- Start of turn " + turn + ": switch on Happy Hour? (once per game, lasts this turn and the next) ----");
+        System.out.println("  1) No, not now");
+        System.out.println("  2) Yes, switch on Happy Hour");
+        return readChoice(1, 2) == 2;
+    }
+
+    public StaffAction chooseHostAction(List<StaffAction> options) {
+        return choose("HOST - choose ONE seating (in addition to the Waiter):", options);
     }
 
     public StaffAction chooseWaiterAction(List<StaffAction> options) {

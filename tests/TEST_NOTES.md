@@ -90,3 +90,47 @@ Result: 0 paid, revenue $0.00, average satisfaction N/A, 2 unhappy departures: *
 ## Stage 1 behaviour still works
 With `VIP_ARRIVAL_TURNS` and `CRITIC_ARRIVAL_TURNS` set to empty, all six arrivals are Regular again and the three
 Stage 1 runs replay byte for byte against their saved outputs.
+
+# Stage 3 (tag stage-3) notes
+
+## Rules fixed for reproducibility
+- **Menu:** Salad $9.00 (1 unit), Burger $15.00 (1), Pasta $18.00 (2), Salad + Pasta combo $24.30 (3),
+  Burger + Salad combo $21.60 (2). Combo price = 90% of the two parts, rounded half up to the nearest cent.
+- **Food choice:** customer n orders dish ((n - 1) mod 5): Salad, Burger, Pasta, Salad + Pasta combo,
+  Burger + Salad combo, Salad. The Critic (customer #4) picks the most preparation units: the Salad + Pasta combo.
+- **Turn order:** Happy Hour prompt (until used), arrivals, turn screen, Host, Waiter, Chef, eating and payment,
+  waiting and abandonment. The Host is skipped with a message when nobody can be seated.
+- **Happy Hour:** lasts the turn it is switched on and the next. Orders taken then get 20% off after the VIP discount.
+  Customers waiting for a table or food recover 15 at the start of each active turn (max 100).
+- New input lines: one Happy Hour answer per turn until it is used (1 = no, 2 = yes), and one Host answer on turns
+  where someone can be seated. So Stage 1 and 2 input files only replay at their own tags.
+
+## Run 5: Stage 3 victory (tests/stage3_win_input.txt)
+Strategy: Happy Hour on turn 4. The Host seats each arrival; the Waiter serves a READY dish if there is one, else takes
+an order; the Chef prepares the oldest order.
+
+| Customer | Type | Dish | Bill | Paid on turn | Satisfaction recorded |
+|---|---|---|---|---|---|
+| #1 | Regular | Salad | $9.00 | 4 | 92 |
+| #2 | VIP | Burger | $10.80 (VIP 10% off, then Happy Hour 20% off) | 7 | 100 (lost 5 on turn 4, recovered 15 on turn 5, capped at 100) |
+| #3 | Regular | Pasta | $18.00 | 11 | 84 |
+| #4 | Critic | Salad + Pasta combo | $24.30 | 15 | 64 |
+| #5 | Regular | Burger + Salad combo | $21.60 | 18 | 76 |
+
+Result: 5 paid, revenue $83.70, average satisfaction 83.2: **VICTORY**. Customer #6 cannot finish paying in time.
+Compared with Stage 2, the Host seating on arrival lets the Waiter take the order the same turn, so every customer
+is served sooner: customer #3 records 84 (76 in Stage 2) and the Critic 64 (52 in Stage 2).
+
+## Run 6: Stage 3 defeat (tests/stage3_lose_input.txt)
+Strategy: Host, Waiter and Chef always wait; Happy Hour is switched on at turn 10.
+On turns 10 and 11 every waiting customer recovers 15 (for example #1: 36 -> 43 -> 50). The Critic who arrives on
+turn 10 drops to 88 and is capped back at 100, not 103. On turn 12 Happy Hour shows as used and recovery stops.
+
+Result: 0 paid, revenue $0.00, average satisfaction N/A: **DEFEAT**. Happy Hour slows the losses but cannot win
+the game if nobody is served.
+
+## Other Stage 3 behaviour checked
+- Bad input at the Happy Hour prompt (letters, 3) is rejected and asked again.
+- Happy Hour is offered only until it is used; afterwards the prompt no longer appears.
+- Orders taken before Happy Hour keep their price (customer #1's Salad stays $9.00 in Run 5), and orders taken after it
+  ends pay full price (customer #3's Pasta, $18.00).

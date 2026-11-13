@@ -6,12 +6,12 @@ public class Order {
     public enum Status { PREPARING, READY, SERVED, PAID, CANCELLED }
 
     private final Customer customer;
-    private final MenuItem item;
+    private final Dish item;          // Stage 3: a single item or a combo
     private final int billCents;      // locked when the order is taken
     private int unitsDone;
     private Status status = Status.PREPARING;
 
-    public Order(Customer customer, MenuItem item, int billCents) {
+    public Order(Customer customer, Dish item, int billCents) {
         this.customer = customer;
         this.item = item;
         this.billCents = billCents;
@@ -61,7 +61,7 @@ public class Order {
         return customer;
     }
 
-    public MenuItem getItem() {
+    public Dish getItem() {
         return item;
     }
 

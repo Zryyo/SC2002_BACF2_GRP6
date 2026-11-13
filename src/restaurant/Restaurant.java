@@ -16,7 +16,13 @@ public class Restaurant {
     private final Waiter waiter = new Waiter();
     private final Chef chef = new Chef();
     private final Cashier cashier = new Cashier();
+    private final Host host = new Host();                 // Stage 3
     private final Ledger ledger = new Ledger();
+    private final HappyHour happyHour = new HappyHour();  // Stage 3
+    private final List<Dish> menu = List.of(              // Stage 3: 3 items + 2 combos
+            MenuItem.SALAD, MenuItem.BURGER, MenuItem.PASTA,
+            new ComboMeal(MenuItem.SALAD, MenuItem.PASTA),
+            new ComboMeal(MenuItem.BURGER, MenuItem.SALAD));
 
     public Restaurant() {
         for (int i = 1; i <= GameConfig.TABLE_COUNT; i++) {
@@ -30,11 +36,29 @@ public class Restaurant {
         waiter.resetForNewTurn();
         chef.resetForNewTurn();
         cashier.resetForNewTurn();
+        host.resetForNewTurn();
     }
 
     public void addArrival(Customer c) {
         waitingQueue.addLast(c);
         customers.add(c);
+    }
+
+    /**
+     * Stage 3: the one seating rule shared by the Waiter and the Host.
+     * Returns why this seating is not allowed, or null if it is.
+     */
+    public String seatingProblem(Customer c, Table t) {
+        if (c == null || t == null) {
+            return "Nobody can be seated right now: no customer is waiting, or no table is free.";
+        }
+        if (!c.canBeSeated()) {
+            return "Customer #" + c.getId() + " is not waiting for a table.";
+        }
+        if (!t.isFree()) {
+            return "Table " + t.getNumber() + " is already occupied.";
+        }
+        return null;
     }
 
     public void seatCustomer(Customer c, Table t) {
@@ -156,4 +180,7 @@ public class Restaurant {
     public Chef getChef()                { return chef; }
     public Cashier getCashier()          { return cashier; }
     public Ledger getLedger()            { return ledger; }
+    public Host getHost()                { return host; }
+    public HappyHour getHappyHour()      { return happyHour; }
+    public List<Dish> getMenu()          { return menu; }
 }

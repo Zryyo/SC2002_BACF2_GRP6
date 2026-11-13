@@ -1,5 +1,7 @@
 package restaurant;
 
+import java.util.List;
+
 /**
  * Base class for all customers. Behaviour that differs by customer type (waiting loss, bill,
  * food choice) sits in methods that subclasses can override, so the game never needs to check
@@ -26,14 +28,15 @@ public abstract class Customer {
 
     /**
      * Deterministic food choice (documented rule): customer number n orders menu item
-     * ((n - 1) mod number of items). So customers 1 to 6 order Salad, Burger, Pasta, Salad, Burger, Pasta.
+     * ((n - 1) mod number of items). Stage 3 menu has 5 dishes (3 items + 2 combos), so customers 1 to 6 order
+     * Salad, Burger, Pasta, Salad + Pasta combo, Burger + Salad combo, Salad.
      */
-    public MenuItem chooseDish(MenuItem[] menu) {
-        return menu[(id - 1) % menu.length];
+    public Dish chooseDish(List<Dish> menu) {
+        return menu.get((id - 1) % menu.size());
     }
 
-    /** What this customer pays for the item, in cents. */
-    public int billFor(MenuItem item) {
+    /** What this customer pays for the dish, in cents, before any Happy Hour discount. */
+    public int billFor(Dish item) {
         return item.getPriceCents();
     }
 
@@ -53,6 +56,11 @@ public abstract class Customer {
     /** Waiting, seated or ordered but not yet served: these customers lose satisfaction. */
     public boolean isAwaitingService() {
         return status == Status.WAITING || status == Status.SEATED || status == Status.ORDERED;
+    }
+
+    /** Stage 3 (Happy Hour): satisfaction goes back up, capped at 100. */
+    public void recoverSatisfaction(int points) {
+        satisfaction = Math.min(GameConfig.MAX_SATISFACTION, satisfaction + points);
     }
 
     public boolean canBeSeated() {
