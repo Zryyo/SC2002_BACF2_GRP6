@@ -172,6 +172,16 @@ Basic restaurant operation: Regular customers, menu, Waiter, Chef, Cashier, Tabl
 - **Unchanged and why:** `Staff`, `Chef`, `Cashier`, `Ledger`, `Table`, `StaffAction`, the other actions, `ActionResult`, `GameResult` and `RestaurantRushApp`. The Chef already works in preparation units, so a 3-unit combo needs no kitchen change, and the Cashier charges the bill locked in the `Order`, so discounted bills need no payment change. The `StaffAction` interface let the Host's choice be added as a new class.
 - **What still works:** the stage-2 rules are unchanged: VIP still loses 5 and gets 10% off, the Critic still loses 12, waiting loss, eating, payment and the result check are the same. If Happy Hour is never switched on and the Host always waits, the game plays by the Stage 2 rules, with the bigger menu.
 
+## AI history
+
+Each member's AI chats are kept on their own branch, in the folder for their stage.
+
+| Stage | Member | Branch | Chat |
+| --- | --- | --- | --- |
+| 1 | Guoyi | [ai-chats/Guoyi](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Guoyi) | [chat-01](https://github.com/Zryyo/SC2002_BACF2_GRP6/blob/ai-chats/Guoyi/ai-history/stage-1/chat-01.md) |
+| 2 | Zroy | [ai-chats/Zroy](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Zroy) | see branch |
+| 3 | Xin En | [ai-chats/Xinen](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Xinen) | see branch |
+
 ## Video timestamps
 
 | # | Segment | Timestamp | Presenter |
