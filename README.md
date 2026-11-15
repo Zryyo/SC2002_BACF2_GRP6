@@ -179,8 +179,8 @@ Each member's AI chats are kept on their own branch, in the folder for their sta
 | Stage | Member | Branch | Chat |
 | --- | --- | --- | --- |
 | 1 | Guoyi | [ai-chats/Guoyi](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Guoyi) | [chat-01](https://github.com/Zryyo/SC2002_BACF2_GRP6/blob/ai-chats/Guoyi/ai-history/stage-1/chat-01.md) |
-| 2 | Zroy | [ai-chats/Zroy](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Zroy) | see branch |
-| 3 | Xin En | [ai-chats/Xinen](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Xinen) | see branch |
+| 2 | Zroy | [ai-chats/Zroy](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Zroy) | [chat-01](https://github.com/Zryyo/SC2002_BACF2_GRP6/blob/ai-chats/Zroy/ai-history/stage-2/chat-01.md) |
+| 3 | Xin En | [ai-chats/Xinen](https://github.com/Zryyo/SC2002_BACF2_GRP6/tree/ai-chats/Xinen) | [chat-01](https://github.com/Zryyo/SC2002_BACF2_GRP6/blob/ai-chats/Xinen/ai-history/stage-3/chat-01.md) |
 
 ## Video timestamps
 
