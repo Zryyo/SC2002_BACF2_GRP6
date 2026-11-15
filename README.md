@@ -5,6 +5,7 @@ You play the manager. Staff time is limited, so you decide which customers and o
 
 - **Repository:** https://github.com/Zryyo/SC2002_BACF2_GRP6
 - **Stages (git tags):** `stage-1`, `stage-2`, `stage-3`
+- Youtube Demo Video Link: https://youtu.be/w1POgyBDyhE 
 
 ## Build and run
 
@@ -215,10 +216,14 @@ Each member's AI chats are kept on their own branch, in the folder for their sta
 
 | # | Segment | Timestamp | Presenter |
 | --- | --- | --- | --- |
-| 1 | The game launching from the submitted project | _TODO_ | _TODO_ |
-| 2 | Meaningful manager choices, including a decision where staff are constrained | _TODO_ | _TODO_ |
-| 3 | A dish going READY → SERVED → payment | _TODO_ | _TODO_ |
-| 4 | A VIP or Critic behaviour | _TODO_ | _TODO_ |
-| 5 | A Stage 3 feature | _TODO_ | _TODO_ |
-| 6 | One victory and one defeat | _TODO_ | _TODO_ |
-| 7 | The stage tag comparisons and the diagrams | _TODO_ | _TODO_ |
+| 1 | Game Overview | 0:00-1:51 | Guoyi |
+| 2 | The game launching from the submitted project | 1:51-2:05 | Xin En |
+| 3 | A dish going READY → SERVED → payment | 2:05-3:44 | Xin En |
+| 4 | A VIP or Critic behaviour | 3:44-4:17 | Xin En |
+| 5 | A Stage 3 feature | 4:17-4:52 | Xin En |
+| 6 | One victory and one defeat | 4:52-5:36 | Xin En |
+| 7 | The stage tag comparisons and the stage class diagrams | 5:36-10:23 | Zroy |
+| 8 | Sequence Diagram of specific use case | 10:23-13:05 | Guoyi |
+| 9 | Reflections | 13:05-15:00 | Guoyi, Zroy, Xin En |
+
+
