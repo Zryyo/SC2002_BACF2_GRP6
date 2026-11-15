@@ -172,6 +172,35 @@ Basic restaurant operation: Regular customers, menu, Waiter, Chef, Cashier, Tabl
 - **Unchanged and why:** `Staff`, `Chef`, `Cashier`, `Ledger`, `Table`, `StaffAction`, the other actions, `ActionResult`, `GameResult` and `RestaurantRushApp`. The Chef already works in preparation units, so a 3-unit combo needs no kitchen change, and the Cashier charges the bill locked in the `Order`, so discounted bills need no payment change. The `StaffAction` interface let the Host's choice be added as a new class.
 - **What still works:** the stage-2 rules are unchanged: VIP still loses 5 and gets 10% off, the Critic still loses 12, waiting loss, eating, payment and the result check are the same. If Happy Hour is never switched on and the Host always waits, the game plays by the Stage 2 rules, with the bigger menu.
 
+## From demo build to actual game (not implemented)
+
+This version is deliberately deterministic: arrivals, customer types and food choices follow fixed rules, so every run with the same input produces the same output. That makes the game easy to reproduce, which is why the test runs and the TA's base setting use it. Nothing in this section is implemented. For a playable game with more variety, these are the changes to make.
+
+### 1. Seeded random food choice
+
+- `RestaurantRushApp`: accept an optional `--seed N` argument. With no seed, keep the current fixed rule, so all existing test runs still replay.
+- `Restaurant`: hold a `java.util.Random` created from the seed (or none when no seed is given).
+- `Customer.chooseDish`: if a `Random` is present, pick `menu.get(random.nextInt(menu.size()))`; otherwise use the current rule, menu index `(id - 1) mod menu size`.
+- `CriticCustomer`: keep its fixed preference (most preparation units), so the Critic still behaves differently from other customers.
+- `ConsoleUI`: print the seed at the start of the game, so any run can be reproduced by passing the same seed again.
+
+### 2. Random arrivals and customer types
+
+- Replace the fixed arrival turns in `GameConfig` with a seeded schedule built once at the start of the game, for example six arrivals spread across turns 1 to 16.
+- Pick each arrival's type at random, but always include at least one VIP and one Critic, so every game exercises all customer types.
+- Only `Game.createArrival` needs to change, because it is already the single place that decides which customer type arrives.
+
+### 3. Difficulty settings
+
+- Move the base values in `GameConfig` (number of turns, tables, arrival frequency, satisfaction loss, targets) into a difficulty object chosen at the start, for example Easy, Normal and Hard.
+- Keep Normal identical to the current base setting, so a TA can still reproduce our runs.
+
+### 4. Quality-of-life
+
+- Show the turn's events in a short summary before the next prompt.
+- Let the player type `help` at any prompt to see the rules.
+- Offer a "play again" option at the end instead of exiting.
+
 ## AI history
 
 Each member's AI chats are kept on their own branch, in the folder for their stage.
